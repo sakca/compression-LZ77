@@ -54,9 +54,10 @@ int main()
     decoded_text = decode(encoded_content, number_tokens, &decoded_size);
     writefile("decoded.txt", decoded_text, decoded_size);
 
+    int encoded_size = number_tokens * sizeof(token);
     cout << "Original size: " << original_size
-         << ", Encoded size: " << number_tokens * sizeof(token)
-         << ", Decoded size: " << decoded_size;
+         << ", Encoded size: " << encoded_size << endl;
+    printf("Compression rate: %.02f%%", (float)(original_size - encoded_size) / (float)original_size * 100.0);
 
     return 0;
 }
